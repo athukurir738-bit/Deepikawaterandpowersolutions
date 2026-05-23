@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Deepika Water And Power Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --blue: #0a5c9e; --blue-light: #1a7fd4; --blue-pale: #e6f4ff;
+    --teal: #0d9488; --teal-light: #14b8a6; --teal-pale: #e0f7f5;
+    --white: #ffffff; --off-white: #f4f9ff;
+    --text-dark: #0f172a; --text-mid: #374151; --text-muted: #6b7280;
+    --border: #dbeafe;
+    --shadow: 0 4px 24px rgba(10,92,158,0.10);
+    --shadow-lg: 0 8px 40px rgba(10,92,158,0.16);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text-dark); background: var(--white); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 68px;
+    box-shadow: 0 2px 16px rgba(10,92,158,0.07);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-logo-icon {
+    width: 44px; height: 44px; background: linear-gradient(135deg, var(--blue), var(--teal-light));
+    border-radius: 12px; display: flex; align-items: center; justify-content: center;
+  }
+  .nav-logo-icon svg { width: 26px; height: 26px; fill: white; }
+  .nav-logo-text { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--blue); line-height: 1.2; }
+  .nav-logo-text span { display: block; font-size: 0.7rem; font-family: 'DM Sans', sans-serif; font-weight: 400; color: var(--teal); letter-spacing: 1px; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 24px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-weight: 500; font-size: 0.88rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--blue), var(--teal));
+    color: white; border: none; padding: 10px 22px; border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.9rem;
+    cursor: pointer; text-decoration: none; transition: opacity .2s, transform .15s;
+  }
+  .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 26px; height: 2px; background: var(--blue); border-radius: 2px; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #e6f4ff 0%, #f0fdfb 55%, #e0f7f5 100%);
+    display: flex; align-items: center; padding: 100px 5% 60px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -80px; right: -80px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(26,127,212,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-content { max-width: 620px; z-index: 1; animation: fadeUp .8s ease both; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--white); border: 1px solid var(--border);
+    padding: 6px 16px; border-radius: 50px; font-size: 0.82rem;
+    color: var(--blue); font-weight: 500; margin-bottom: 24px;
+    box-shadow: 0 2px 12px rgba(10,92,158,0.08);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 700; line-height: 1.18; color: var(--text-dark); margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: normal; color: var(--blue); }
+  .hero p { font-size: 1.05rem; line-height: 1.75; color: var(--text-mid); margin-bottom: 36px; max-width: 520px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--blue), var(--teal));
+    color: white; padding: 14px 28px; border-radius: 10px;
+    font-weight: 600; font-size: 0.95rem; text-decoration: none;
+    transition: opacity .2s, transform .15s; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+  .btn-secondary {
+    background: white; color: var(--blue); padding: 14px 28px; border-radius: 10px;
+    font-weight: 600; font-size: 0.95rem; text-decoration: none; border: 1.5px solid var(--blue);
+    transition: background .2s, transform .15s; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-secondary:hover { background: var(--blue-pale); transform: translateY(-2px); }
+  .hero-stats { display: flex; gap: 36px; margin-top: 52px; flex-wrap: wrap; }
+  .hero-stat-num { font-size: 1.7rem; font-weight: 700; color: var(--blue); font-family: 'Playfair Display', serif; }
+  .hero-stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+  .hero-visual { flex: 1; display: flex; justify-content: center; align-items: center; z-index: 1; animation: fadeUp .8s .2s ease both; }
+  .hero-cards-float { position: relative; width: 340px; height: 360px; }
+  .float-card {
+    position: absolute; background: white; border-radius: 16px;
+    padding: 16px 20px; box-shadow: var(--shadow-lg); border: 1px solid var(--border);
+    animation: float 4s ease-in-out infinite;
+  }
+  .float-card:nth-child(1) { top: 0; left: 20px; width: 180px; animation-delay: 0s; }
+  .float-card:nth-child(2) { top: 90px; right: 0; width: 170px; animation-delay: 1s; }
+  .float-card:nth-child(3) { bottom: 30px; left: 0; width: 190px; animation-delay: 2s; }
+  .float-card-icon { font-size: 1.6rem; margin-bottom: 8px; }
+  .float-card-title { font-weight: 600; font-size: 0.88rem; color: var(--text-dark); }
+  .float-card-sub { font-size: 0.76rem; color: var(--text-muted); margin-top: 3px; }
+
+  /* SECTIONS */
+  section { padding: 80px 5%; }
+  .section-label {
+    display: inline-block; background: var(--blue-pale); color: var(--blue);
+    font-weight: 600; font-size: 0.78rem; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 5px 14px; border-radius: 50px; margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+    font-weight: 700; color: var(--text-dark); line-height: 1.2; margin-bottom: 14px;
+  }
+  .section-sub { font-size: 1rem; color: var(--text-muted); line-height: 1.7; max-width: 560px; }
+  .section-header { margin-bottom: 48px; }
+  .section-header.center { text-align: center; }
+  .section-header.center .section-sub { margin: 0 auto; }
+
+  /* SERVICES */
+  #services { background: var(--off-white); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+  .service-card {
+    background: white; border-radius: 18px; padding: 28px 24px;
+    border: 1px solid var(--border); box-shadow: var(--shadow);
+    transition: transform .25s, box-shadow .25s; cursor: default;
+  }
+  .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+  .service-icon {
+    width: 56px; height: 56px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; margin-bottom: 18px;
+  }
+  .service-icon.blue { background: var(--blue-pale); }
+  .service-icon.teal { background: var(--teal-pale); }
+  .service-icon.orange { background: #fff7ed; }
+  .service-card h3 { font-size: 1.05rem; font-weight: 600; color: var(--text-dark); margin-bottom: 8px; }
+  .service-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; }
+  .service-tag {
+    display: inline-block; margin-top: 14px;
+    background: var(--blue-pale); color: var(--blue);
+    font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 50px;
+  }
+  .service-tag.green { background: var(--teal-pale); color: var(--teal); }
+  .service-tag.orange { background: #fff7ed; color: #c2410c; }
+
+  /* SBI INSURANCE BANNER */
+  #insurance {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #0ea5e9 100%);
+    padding: 70px 5%;
+  }
+  .sbi-wrap {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  }
+  .sbi-left { color: white; }
+  .sbi-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.15); color: white;
+    padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600;
+    margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.25);
+  }
+  .sbi-left h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+  .sbi-left p { font-size: 0.95rem; line-height: 1.75; opacity: 0.88; margin-bottom: 28px; }
+  .sbi-plans { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .sbi-plan {
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 14px; padding: 18px 16px; color: white;
+    transition: background .2s;
+  }
+  .sbi-plan:hover { background: rgba(255,255,255,0.2); }
+  .sbi-plan-icon { font-size: 1.5rem; margin-bottom: 8px; }
+  .sbi-plan h4 { font-size: 0.92rem; font-weight: 600; margin-bottom: 4px; }
+  .sbi-plan p { font-size: 0.78rem; opacity: 0.78; line-height: 1.5; margin: 0; }
+  .sbi-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: white; color: #1e3a5f; padding: 13px 28px;
+    border-radius: 10px; font-weight: 700; font-size: 0.92rem;
+    text-decoration: none; margin-top: 24px;
+    transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+  .sbi-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(0,0,0,0.28); }
+  .sbi-right { }
+  .sbi-logo-box {
+    background: white; border-radius: 24px; padding: 32px;
+    text-align: center; box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+  }
+  .sbi-logo-main {
+    width: 90px; height: 90px; border-radius: 20px; margin: 0 auto 16px;
+    background: linear-gradient(135deg, #00518f, #003d6b);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.8rem;
+  }
+  .sbi-logo-box h3 { font-size: 1.3rem; font-weight: 700; color: #003d6b; margin-bottom: 6px; }
+  .sbi-logo-box p { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 20px; }
+  .sbi-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .sbi-stat { background: #f0f7ff; border-radius: 12px; padding: 14px 12px; text-align: center; }
+  .sbi-stat-num { font-size: 1.3rem; font-weight: 700; color: #003d6b; font-family: 'Playfair Display', serif; }
+  .sbi-stat-label { font-size: 0.72rem; color: var(--text-muted); margin-top: 3px; }
+
+  /* BRANDS WITH MODELS & PRICES */
+  #brands { background: white; }
+  .brand-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 36px; }
+  .brand-tab {
+    padding: 8px 20px; border-radius: 50px; border: 1.5px solid var(--border);
+    font-size: 0.85rem; font-weight: 600; cursor: pointer;
+    transition: all .2s; background: white; color: var(--text-mid);
+  }
+  .brand-tab.active, .brand-tab:hover {
+    background: var(--blue); color: white; border-color: var(--blue);
+  }
+  .brand-section { display: none; }
+  .brand-section.active { display: block; }
+  .brand-header {
+    display: flex; align-items: center; gap: 20px; margin-bottom: 32px;
+    padding: 20px 24px; background: var(--off-white); border-radius: 16px;
+    border: 1px solid var(--border);
+  }
+  .brand-logo-circle {
+    width: 70px; height: 70px; border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem; flex-shrink: 0;
+  }
+  .brand-header h3 { font-size: 1.3rem; font-weight: 700; color: var(--text-dark); }
+  .brand-header p { font-size: 0.88rem; color: var(--text-muted); margin-top: 4px; }
+  .brand-badge { font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 50px; margin-top: 8px; display: inline-block; }
+  .models-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; }
+  .model-card {
+    background: white; border-radius: 18px; border: 1px solid var(--border);
+    box-shadow: var(--shadow); overflow: hidden;
+    transition: transform .25s, box-shadow .25s;
+  }
+  .model-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+  .model-img {
+    height: 140px; display: flex; align-items: center; justify-content: center;
+    font-size: 4.5rem; position: relative;
+  }
+  .model-badge-popular {
+    position: absolute; top: 10px; right: 10px;
+    background: #f59e0b; color: white; font-size: 0.65rem; font-weight: 700;
+    padding: 3px 10px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .model-body { padding: 18px 18px 20px; }
+  .model-body h4 { font-size: 0.95rem; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+  .model-body .model-sub { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 12px; }
+  .model-features { list-style: none; margin-bottom: 14px; }
+  .model-features li { font-size: 0.78rem; color: var(--text-mid); padding: 2px 0; display: flex; align-items: center; gap: 6px; }
+  .model-features li::before { content: '✓'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+  .model-price-row { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; }
+  .model-price { font-size: 1.2rem; font-weight: 700; color: var(--blue); font-family: 'Playfair Display', serif; }
+  .model-price span { font-size: 0.7rem; font-weight: 400; color: var(--text-muted); font-family: 'DM Sans', sans-serif; }
+  .model-enquire {
+    background: linear-gradient(135deg, var(--blue), var(--teal-light));
+    color: white; border: none; padding: 7px 16px; border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.78rem;
+    cursor: pointer; transition: opacity .2s;
+  }
+  .model-enquire:hover { opacity: 0.85; }
+
+  /* WHY US */
+  #why { background: linear-gradient(135deg, #0a5c9e 0%, #0d9488 100%); }
+  #why .section-title { color: white; }
+  #why .section-label { background: rgba(255,255,255,0.15); color: white; }
+  #why .section-sub { color: rgba(255,255,255,0.75); }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+  .why-card {
+    background: rgba(255,255,255,0.1); border-radius: 16px; padding: 26px 22px;
+    border: 1px solid rgba(255,255,255,0.2); color: white;
+    transition: background .25s, transform .25s;
+  }
+  .why-card:hover { background: rgba(255,255,255,0.18); transform: translateY(-4px); }
+  .why-card .num { font-size: 2.2rem; font-weight: 700; font-family: 'Playfair Display', serif; opacity: 0.35; margin-bottom: 8px; }
+  .why-card h4 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+  .why-card p { font-size: 0.85rem; opacity: 0.8; line-height: 1.65; }
+
+  /* BOOKING */
+  #booking { background: var(--off-white); }
+  .booking-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .booking-info h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--text-dark); margin-bottom: 16px; }
+  .booking-info p { color: var(--text-muted); line-height: 1.75; margin-bottom: 24px; }
+  .contact-method {
+    display: flex; align-items: center; gap: 14px;
+    background: white; border-radius: 12px;
+    padding: 16px 20px; margin-bottom: 14px; border: 1px solid var(--border);
+    text-decoration: none; transition: box-shadow .2s, transform .15s;
+  }
+  .contact-method:hover { box-shadow: var(--shadow); transform: translateX(4px); }
+  .contact-method-icon { width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+  .contact-method-text strong { display: block; font-size: 0.9rem; color: var(--text-dark); }
+  .contact-method-text span { font-size: 0.82rem; color: var(--text-muted); }
+  .booking-form { background: white; border-radius: 20px; padding: 36px 32px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  .booking-form h3 { font-size: 1.25rem; font-weight: 700; color: var(--text-dark); margin-bottom: 24px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 0.83rem; font-weight: 600; color: var(--text-mid); margin-bottom: 6px; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 11px 14px; border: 1.5px solid var(--border);
+    border-radius: 9px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    color: var(--text-dark); background: white; transition: border-color .2s; outline: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(10,92,158,0.1); }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .submit-btn {
+    width: 100%; padding: 13px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--blue), var(--teal));
+    color: white; border: none; font-family: 'DM Sans', sans-serif;
+    font-weight: 600; font-size: 0.95rem; cursor: pointer;
+    transition: opacity .2s, transform .15s;
+  }
+  .submit-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+  .success-msg { display: none; background: var(--teal-pale); color: var(--teal); padding: 14px; border-radius: 10px; text-align: center; font-weight: 600; font-size: 0.9rem; margin-top: 14px; }
+
+  /* FOOTER */
+  footer { background: #0a1628; color: rgba(255,255,255,0.75); padding: 60px 5% 30px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+  .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .footer-logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--blue), var(--teal-light)); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+  .footer-logo-icon svg { width: 22px; height: 22px; fill: white; }
+  .footer-logo-text { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: white; line-height: 1.2; }
+  .footer-brand p { font-size: 0.85rem; line-height: 1.75; max-width: 280px; }
+  .footer-col h5 { color: white; font-size: 0.9rem; font-weight: 600; margin-bottom: 16px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.85rem; transition: color .2s; }
+  .footer-col ul li a:hover { color: white; }
+  .footer-contact { font-size: 0.85rem; line-height: 1.9; }
+  .footer-contact strong { color: white; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; flex-wrap: wrap; gap: 10px; }
+  .footer-bottom a { color: rgba(255,255,255,0.6); text-decoration: none; }
+
+  /* FLOATING WA */
+  .floating-wa {
+    position: fixed; bottom: 28px; right: 28px; z-index: 888;
+    background: #25d366; color: white; width: 58px; height: 58px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4); text-decoration: none; font-size: 1.7rem;
+    transition: transform .2s; animation: pulse 2.5s ease infinite;
+  }
+  .floating-wa:hover { transform: scale(1.1); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  @keyframes pulse { 0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); } 50% { box-shadow: 0 4px 28px rgba(37,211,102,0.7); } }
+  .scroll-reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+  .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .hero { flex-direction: column; }
+    .hero-visual { display: none; }
+    .booking-wrap, .sbi-wrap { grid-template-columns: 1fr; gap: 30px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
+  nav.open .nav-links {
+    display: flex; flex-direction: column; position: fixed;
+    top: 68px; left: 0; right: 0; background: white;
+    padding: 20px 5%; border-bottom: 1px solid var(--border);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08); gap: 20px;
+  }
+  nav.open .nav-cta { display: inline-block; margin: 0 5% 20px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2C12 2 4 9 4 14a8 8 0 0016 0c0-5-8-12-8-12z"/></svg>
+    </div>
+    <div class="nav-logo-text">Deepika Water & Power<span>Solutions</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#insurance">SBI Insurance</a></li>
+    <li><a href="#brands">Brands & Models</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#booking">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/917702211858" class="nav-cta">📞 Book Now</a>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-badge">💧 Trusted Water & Power Solutions</div>
+    <h1>Pure Water.<br/><em>Clean Future.</em><br/>Better Life.</h1>
+    <p>Deepika Water And Power Solutions — your one-stop shop for water purifiers, water plants, glasses (dispensers), power solutions, SBI insurance, and expert service. Serving homes and businesses with trust.</p>
+    <div class="hero-btns">
+      <a href="#booking" class="btn-primary">📅 Book a Service →</a>
+      <a href="https://wa.me/917702211858" class="btn-secondary">💬 WhatsApp Us</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">500+</div><div class="hero-stat-label">Happy Customers</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">15+</div><div class="hero-stat-label">Brands Available</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">24/7</div><div class="hero-stat-label">Support</div></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-cards-float">
+      <div class="float-card"><div class="float-card-icon">💧</div><div class="float-card-title">RO Purifiers</div><div class="float-card-sub">7-stage filtration</div></div>
+      <div class="float-card"><div class="float-card-icon">🛡️</div><div class="float-card-title">SBI Insurance</div><div class="float-card-sub">Life & Health Plans</div></div>
+      <div class="float-card"><div class="float-card-icon">🏭</div><div class="float-card-title">Water Plants</div><div class="float-card-sub">Industrial & Commercial</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header center">
+    <div class="section-label">Our Services</div>
+    <h2 class="section-title">What We Offer</h2>
+    <p class="section-sub">From sales to installation and ongoing maintenance — we take care of everything for you.</p>
+  </div>
+  <div class="services-grid scroll-reveal">
+    <div class="service-card">
+      <div class="service-icon blue">💧</div>
+      <h3>Water Purifier Sales</h3>
+      <p>Wide range of RO, UV, and UF water purifiers from top brands. Best prices with full warranty included.</p>
+      <span class="service-tag">Sales</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon teal">🔧</div>
+      <h3>Installation & Service</h3>
+      <p>Professional installation and annual maintenance contracts for all water purifiers and treatment systems.</p>
+      <span class="service-tag green">Service</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon blue">🥛</div>
+      <h3>Water Glasses & Dispensers</h3>
+      <p>Premium water dispensers, glass water purifiers, and cooling units for offices and households.</p>
+      <span class="service-tag">Dispensers</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon teal">🏭</div>
+      <h3>Water Treatment Plants</h3>
+      <p>Complete water treatment plants for industries, societies, and commercial establishments. End-to-end setup.</p>
+      <span class="service-tag green">Industrial</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon orange">🛡️</div>
+      <h3>SBI Life Insurance</h3>
+      <p>Authorized SBI Life Insurance agent. Protect your family with life, health, and investment-linked plans.</p>
+      <span class="service-tag orange">Insurance</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon blue">⚡</div>
+      <h3>Power & Solar Solutions</h3>
+      <p>Inverters, UPS, solar panels, and power backup solutions for homes and commercial establishments.</p>
+      <span class="service-tag">Power</span>
+    </div>
+  </div>
+</section>
+
+<!-- SBI INSURANCE -->
+<section id="insurance">
+  <div class="sbi-wrap scroll-reveal">
+    <div class="sbi-left">
+      <div class="sbi-badge">🛡️ Authorized SBI Life Insurance Agent</div>
+      <h2>Secure Your Future with SBI Life Insurance</h2>
+      <p>We are proud to be authorized agents for SBI Life Insurance — India's most trusted insurer. Get the best life, health, and investment plans for you and your family at the most affordable premiums.</p>
+      <div class="sbi-plans">
+        <div class="sbi-plan">
+          <div class="sbi-plan-icon">❤️</div>
+          <h4>Life Insurance</h4>
+          <p>Term plans with high coverage at low premium. Protect your family's future.</p>
+        </div>
+        <div class="sbi-plan">
+          <div class="sbi-plan-icon">🏥</div>
+          <h4>Health Insurance</h4>
+          <p>Cashless hospitalization, family floater plans, and critical illness coverage.</p>
+        </div>
+        <div class="sbi-plan">
+          <div class="sbi-plan-icon">📈</div>
+          <h4>Investment Plans</h4>
+          <p>ULIPs and endowment plans — grow wealth while staying insured.</p>
+        </div>
+        <div class="sbi-plan">
+          <div class="sbi-plan-icon">👶</div>
+          <h4>Child Plans</h4>
+          <p>Secure your child's education and future with dedicated child saving plans.</p>
+        </div>
+      </div>
+      <a href="https://wa.me/917702211858?text=Hi! I'm interested in SBI Life Insurance plans. Please guide me." class="sbi-cta" target="_blank">🛡️ Get Free Insurance Advice →</a>
+    </div>
+    <div class="sbi-right">
+      <div class="sbi-logo-box">
+        <div class="sbi-logo-main">🏦</div>
+        <h3>SBI Life Insurance</h3>
+        <p>India's Most Trusted Life Insurer<br/>Authorized Agent: Deepika Water & Power Solutions</p>
+        <div class="sbi-stats">
+          <div class="sbi-stat"><div class="sbi-stat-num">₹500Cr+</div><div class="sbi-stat-label">Claims Settled</div></div>
+          <div class="sbi-stat"><div class="sbi-stat-num">25+</div><div class="sbi-stat-label">Plan Types</div></div>
+          <div class="sbi-stat"><div class="sbi-stat-num">99.01%</div><div class="sbi-stat-label">Claim Settlement</div></div>
+          <div class="sbi-stat"><div class="sbi-stat-num">₹500</div><div class="sbi-stat-label">Min. Premium/mo</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS & MODELS -->
+<section id="brands">
+  <div class="section-header center">
+    <div class="section-label">Brands & Models</div>
+    <h2 class="section-title">Top Brands — Models & Prices</h2>
+    <p class="section-sub">Choose from a wide range of models across leading brands. All with warranty and installation support.</p>
+  </div>
+
+  <!-- TABS -->
+  <div class="brand-tabs scroll-reveal">
+    <button class="brand-tab active" onclick="showBrand('kent')">💧 Kent RO</button>
+    <button class="brand-tab" onclick="showBrand('aquaguard')">🌊 Aquaguard</button>
+    <button class="brand-tab" onclick="showBrand('livpure')">🔵 Livpure</button>
+    <button class="brand-tab" onclick="showBrand('pureit')">💦 HUL Pureit</button>
+    <button class="brand-tab" onclick="showBrand('aquafresh')">🏭 Aqua Fresh</button>
+    <button class="brand-tab" onclick="showBrand('luminous')">⚡ Luminous</button>
+  </div>
+
+  <!-- KENT -->
+  <div class="brand-section active scroll-reveal" id="brand-kent">
+    <div class="brand-header">
+      <div class="brand-logo-circle" style="background:#e6f4ff">💧</div>
+      <div>
+        <h3>Kent RO Systems</h3>
+        <p>India's No. 1 Water Purifier Brand — Multi-stage RO+UV+UF purification with mineral retention technology.</p>
+        <span class="brand-badge" style="background:#e6f4ff;color:#0a5c9e;">✅ Authorized Dealer</span>
+      </div>
+    </div>
+    <div class="models-grid">
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#dbeafe,#e6f4ff)">
+          🚰
+          <span class="model-badge-popular">Best Seller</span>
+        </div>
+        <div class="model-body">
+          <h4>Kent Grand Plus</h4>
+          <div class="model-sub">RO+UV+UF+TDS Control</div>
+          <ul class="model-features">
+            <li>8 L storage tank</li>
+            <li>20 L/hr purification</li>
+            <li>TDS controller</li>
+            <li>Wall mountable</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹14,500<span>/unit</span></div>
+            <button class="model-enquire" onclick="enquire('Kent Grand Plus')">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#dbeafe,#e6f4ff)">💧</div>
+        <div class="model-body">
+          <h4>Kent Pearl</h4>
+          <div class="model-sub">RO+UV+UF Wall Mounted</div>
+          <ul class="model-features">
+            <li>8 L SS tank</li>
+            <li>Auto flush technology</li>
+            <li>Mineral ROTM</li>
+            <li>ABS food grade</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹12,000<span>/unit</span></div>
+            <button class="model-enquire" onclick="enquire('Kent Pearl')">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#dbeafe,#e6f4ff)">🔵</div>
+        <div class="model-body">
+          <h4>Kent Ace</h4>
+          <div class="model-sub">RO+UV+UF Compact</div>
+          <ul class="model-features">
+            <li>7 L storage</li>
+            <li>15 L/hr flow</li>
+            <li>Compact design</li>
+            <li>1-year warranty</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹9,800<span>/unit</span></div>
+            <button class="model-enquire" onclick="enquire('Kent Ace')">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#dbeafe,#e6f4ff)">🌐</div>
+        <div class="model-body">
+          <h4>Kent Smart RO</h4>
+          <div class="model-sub">Smart App-Enabled RO</div>
+          <ul class="model-features">
+            <li>WiFi + app control</li>
+            <li>Filter change alerts</li>
+            <li>10 L tank</li>
+            <li>Zero wastage tech</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹18,000<span>/unit</span></div>
+            <button class="model-enquire" onclick="enquire('Kent Smart RO')">Enquire</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AQUAGUARD -->
+  <div class="brand-section" id="brand-aquaguard">
+    <div class="brand-header">
+      <div class="brand-logo-circle" style="background:#e0f7f5">🌊</div>
+      <div>
+        <h3>Aquaguard (Eureka Forbes)</h3>
+        <p>Trusted for 40+ years — UV, RO and smart purifiers with Advanced Biotron technology.</p>
+        <span class="brand-badge" style="background:#e0f7f5;color:#0d9488;">✅ Service Partner</span>
+      </div>
+    </div>
+    <div class="models-grid">
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#ccfbf1,#e0f7f5)">
+          🌊
+          <span class="model-badge-popular">Top Rated</span>
+        </div>
+        <div class="model-body">
+          <h4>Aquaguard Marvel</h4>
+          <div class="model-sub">RO+UV+MTDS</div>
+          <ul class="model-features">
+            <li>6 L storage tank</li>
+            <li>Biotron technology</li>
+            <li>e-boiling tech</li>
+            <li>Auto shut-off</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹15,500<span>/unit</span></div>
+            <button class="model-enquire" onclick="enquire('Aquaguard Marvel')">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#ccfbf1,#e0f7f5)">💦</div>
+        <div class="model-body">
+          <h4>Aquaguard Geneus</h4>
+          <div class="model-sub">RO+UV+UF Smart</div>
+          <ul class="model-features">
+            <li>7 L SS tank</li>
+            <li>IntelliSense tech</li>
+            <li>Service alert</li>
+            <li>LED indicator</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹19,000<span>/unit</span></div>
+            <button class="model-enquire" onclick="enquire('Aquaguard Geneus')">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#ccfbf1,#e0f7f5)">🔷</div>
+        <div class="model-body">
+          <h4>Aquaguard Enhance</h4>
+          <div class="model-sub">UV Countertop</div>
+          <ul class="model-features">
+            <li>1.5 L/min flow</li>
+            <li>UV SS chamber</li>
+            <li>No storage needed</li>
+            <li>Compact size</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹7,200<span>/unit</span></div>
+            <button class="model-enquire" onclick="enquire('Aquaguard Enhance')">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#ccfbf1,#e0f7f5)">🏠</div>
+        <div class="model-body">
+          <h4>Aquaguard Sure</h4>
+          <div class="model-sub">RO+UV Budget</div>
+          <ul class="model-features">
+            <li>7 L storage</li>
+            <li>Affordable pricing</li>
+            <li>Compact wall mount</li>
+            <li>1-yr warranty</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹8,500<span>/unit</span></div>
+            <button class="model-enquire" onclick="enquire('Aquaguard Sure')">Enquire</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVPURE -->
+  <div class="brand-section" id="brand-livpure">
+    <div class="brand-header">
+      <div class="brand-logo-circle" style="background:#fff7ed">🔵</div>
+      <div>
+        <h3>Livpure Water Purifiers</h3>
+        <p>Stylish, smart and affordable water purifiers with advanced filtration for every home.</p>
+        <span class="brand-badge" style="background:#fff7ed;color:#c2410c;">✅ Authorized Dealer</span>
+      </div>
+    </div>
+    <div class="models-grid">
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#fed7aa,#fff7ed)">
+          🔵
+          <span class="model-badge-popular">Popular</span>
+        </div>
+        <div class="model-body">
+          <h4>Livpure Glo</h4>
+          <div class="model-sub">RO+UV+Mineralizer</div>
+          <ul class="model-features">
+            <li>7 L storage</li>
+            <li>15 L/hr output</li>
+            <li>In-built mineralizer</li>
+            <li>Taste enhancer</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹11,500<span>/unit</span></div>
+            <button class="model-enquire" onclick="enquire('Livpure Glo')">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#fed7aa,#fff7ed)">💠</div>
+        <div class="model-body">
+          <h4>Livpure Envy Plus</h4>
+          <div class="model-sub">RO+UV+UF</div>
+          <ul class="model-features">
+            <li>8.5 L storage</li>
+            <li>Smart LED alerts</li>
+            <li>7-stage filtration</li>
+            <li>Slim design</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹13,200<span>/unit</span></div>
+            <button class="model-enquire" onclick="enquire('Livpure Envy Plus')">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#fed7aa,#fff7ed)">🌟</div>
+        <div class="model-body">
+          <h4>Livpure Touch</h4>
+          <div class="model-sub">RO + Touch Display</div>
+          <ul class="model-features">
+            <li>Touch display panel</li>
+            <li>TDS meter built-in</li>
+            <li>8 L tank</li>
+            <li>Stylish wall mount</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹15,800<span>/unit</span></div>
+            <button class="model-enquire" onclick="enquire('Livpure Touch')">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#fed7aa,#fff7ed)">🏅</div>
+        <div class="model-body">
+          <h4>Livpure Bold+</h4>
+          <div class="model-sub">RO+UV Budget Model</div>
+          <ul class="model-features">
+            <li>7 L tank</li>
+            <li>Budget-friendly</li>
+            <li>Easy maintenance</li>
+            <li>1-yr warranty</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹8,900<span>/unit</span></div>
+            <button class="model-enquire" onclick="enquire('Livpure Bold+')">Enquire</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PUREIT -->
+  <div class="brand-section" id="brand-pureit">
+    <div class="brand-header">
+      <div class="brand-logo-circle" style="background:#f5f3ff">💦</div>
+      <div>
+        <h3>HUL Pureit Water Purifiers</h3>
+        <p>Unilever's Pureit — trusted for eliminating harmful viruses and bacteria at low cost.</p>
+        <span class="brand-badge" style="background:#f5f3ff;color:#7c3aed;">✅ Authorized</span>
+      </div>
+    </div>
+    <div class="models-grid">
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#ede9fe,#f5f3ff)">
+          💦
+          <span class="model-badge-popular">Value Pick</span>
+        </div>
+        <div class="model-body">
+          <h4>Pureit Eco Water Saver</h4>
+          <div class="model-sub">RO+MF — Eco Saver</div>
+          <ul class="model-features">
+            <li>10 L storage</li>
+            <li>Only 1 L waste/5 L</li>
+            <li>Eco Recovery Tech</li>
+            <li>Auto clean</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹13,000<span>/unit</span></div>
+            <button class="model-enquire" onclick="enquire('Pureit Eco Water Saver')">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#ede9fe,#f5f3ff)">🔮</div>
+        <div class="model-body">
+          <h4>Pureit Ultima</h4>
+          <div class="model-sub">RO+UV+MF 10L</div>
+          <ul class="model-features">
+            <li>10 L SS tank</li>
+            <li>Auto-start/stop</li>
+            <li>Alert system</li>
+            <li>Advanced UV</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹16,500<span>/unit</span></div>
+            <button class="model-enquire" onclick="enquire('Pureit Ultima')">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#ede9fe,#f5f3ff)">🌀</div>
+        <div class="model-body">
+          <h4>Pureit Classic</h4>
+          <div class="model-sub">Gravity-based UF</div>
+          <ul class="model-features">
+            <li>No electricity needed</li>
+            <li>23 L capacity</li>
+            <li>Germ kill kit</li>
+            <li>₹0 electricity cost</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹3,200<span>/unit</span></div>
+            <button class="model-enquire" onclick="enquire('Pureit Classic')">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#ede9fe,#f5f3ff)">⚗️</div>
+        <div class="model-body">
+          <h4>Pureit Advanced Pro</h4>
+          <div class="model-sub">RO+UV+MF Pro</div>
+          <ul class="model-features">
+            <li>7 L tank</li>
+            <li>7-stage filtration</li>
+            <li>Advance alert</li>
+            <li>Slim wall mount</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹11,800<span>/unit</span></div>
+            <button class="model-enquire" onclick="enquire('Pureit Advanced Pro')">Enquire</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AQUAFRESH -->
+  <div class="brand-section" id="brand-aquafresh">
+    <div class="brand-header">
+      <div class="brand-logo-circle" style="background:#fef9c3">🏭</div>
+      <div>
+        <h3>Aqua Fresh Water Plants</h3>
+        <p>Industrial and commercial water treatment plants — custom capacity, multi-stage filtration.</p>
+        <span class="brand-badge" style="background:#fef9c3;color:#a16207;">✅ Industrial Partner</span>
+      </div>
+    </div>
+    <div class="models-grid">
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#fef9c3,#fef3c7)">
+          🏭
+          <span class="model-badge-popular">Commercial</span>
+        </div>
+        <div class="model-body">
+          <h4>AquaFresh 500 LPH</h4>
+          <div class="model-sub">Commercial RO Plant</div>
+          <ul class="model-features">
+            <li>500 L/hour output</li>
+            <li>Multi-stage RO</li>
+            <li>SS frame</li>
+            <li>AMC available</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹45,000<span>/unit</span></div>
+            <button class="model-enquire" onclick="enquire('AquaFresh 500 LPH Plant')">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#fef9c3,#fef3c7)">⚙️</div>
+        <div class="model-body">
+          <h4>AquaFresh 1000 LPH</h4>
+          <div class="model-sub">Industrial RO Plant</div>
+          <ul class="model-features">
+            <li>1000 L/hour output</li>
+            <li>Auto controls</li>
+            <li>Digital TDS monitor</li>
+            <li>Full installation</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹80,000<span>/unit</span></div>
+            <button class="model-enquire" onclick="enquire('AquaFresh 1000 LPH Plant')">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#fef9c3,#fef3c7)">🏗️</div>
+        <div class="model-body">
+          <h4>AquaFresh 2000 LPH</h4>
+          <div class="model-sub">Heavy Industrial Plant</div>
+          <ul class="model-features">
+            <li>2000 L/hour</li>
+            <li>Society / factory use</li>
+            <li>Softener included</li>
+            <li>Remote monitoring</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹1,40,000<span>/unit</span></div>
+            <button class="model-enquire" onclick="enquire('AquaFresh 2000 LPH Plant')">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#fef9c3,#fef3c7)">🧪</div>
+        <div class="model-body">
+          <h4>Packaged Drinking Unit</h4>
+          <div class="model-sub">Bottle Water Plant</div>
+          <ul class="model-features">
+            <li>1000–5000 LPH</li>
+            <li>BIS compliant</li>
+            <li>Ozone treatment</li>
+            <li>Bottling compatible</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹2,50,000<span>+</span></div>
+            <button class="model-enquire" onclick="enquire('Packaged Drinking Water Unit')">Enquire</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LUMINOUS -->
+  <div class="brand-section" id="brand-luminous">
+    <div class="brand-header">
+      <div class="brand-logo-circle" style="background:#dcfce7">⚡</div>
+      <div>
+        <h3>Luminous Power Solutions</h3>
+        <p>India's leading inverter and power backup brand — reliable, efficient, and affordable energy solutions.</p>
+        <span class="brand-badge" style="background:#dcfce7;color:#16a34a;">✅ Power Dealer</span>
+      </div>
+    </div>
+    <div class="models-grid">
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#bbf7d0,#dcfce7)">
+          ⚡
+          <span class="model-badge-popular">Best Value</span>
+        </div>
+        <div class="model-body">
+          <h4>Luminous Zelio+ 1100</h4>
+          <div class="model-sub">Home UPS 900VA</div>
+          <ul class="model-features">
+            <li>900VA / 756W</li>
+            <li>Pure sine wave</li>
+            <li>LCD display</li>
+            <li>Battery: 150Ah</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹6,500<span>/unit</span></div>
+            <button class="model-enquire" onclick="enquire('Luminous Zelio+ 1100')">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#bbf7d0,#dcfce7)">🔋</div>
+        <div class="model-body">
+          <h4>Luminous Eco Watt Neo</h4>
+          <div class="model-sub">1650VA Inverter</div>
+          <ul class="model-features">
+            <li>1650VA / 1320W</li>
+            <li>Smart charge</li>
+            <li>Overload protection</li>
+            <li>3-yr warranty</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹9,800<span>/unit</span></div>
+            <button class="model-enquire" onclick="enquire('Luminous Eco Watt Neo 1650')">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#bbf7d0,#dcfce7)">☀️</div>
+        <div class="model-body">
+          <h4>Luminous Solar NXG</h4>
+          <div class="model-sub">Solar Hybrid Inverter</div>
+          <ul class="model-features">
+            <li>1500VA solar</li>
+            <li>Grid + solar hybrid</li>
+            <li>Smart battery mgmt</li>
+            <li>5-yr warranty</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹18,500<span>/unit</span></div>
+            <button class="model-enquire" onclick="enquire('Luminous Solar NXG')">Enquire</button>
+          </div>
+        </div>
+      </div>
+      <div class="model-card">
+        <div class="model-img" style="background:linear-gradient(135deg,#bbf7d0,#dcfce7)">🔌</div>
+        <div class="model-body">
+          <h4>Luminous Red Charge 18000</h4>
+          <div class="model-sub">Tall Tubular Battery</div>
+          <ul class="model-features">
+            <li>150Ah capacity</li>
+            <li>Fast charge tech</li>
+            <li>Low maintenance</li>
+            <li>60-month warranty</li>
+          </ul>
+          <div class="model-price-row">
+            <div class="model-price">₹12,200<span>/unit</span></div>
+            <button class="model-enquire" onclick="enquire('Luminous Red Charge 18000')">Enquire</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="section-header center">
+    <div class="section-label">Why Choose Us</div>
+    <h2 class="section-title">The Deepika Advantage</h2>
+    <p class="section-sub">We go beyond just selling — we build long-term relationships through trust and quality service.</p>
+  </div>
+  <div class="why-grid scroll-reveal">
+    <div class="why-card"><div class="num">01</div><h4>Expert Team</h4><p>Trained technicians with years of hands-on experience in water purification and power systems.</p></div>
+    <div class="why-card"><div class="num">02</div><h4>Genuine Products</h4><p>100% authentic products from authorized brands. No duplicates, no compromises on quality.</p></div>
+    <div class="why-card"><div class="num">03</div><h4>Quick Response</h4><p>Same-day service for urgent calls. We understand that clean water can't wait.</p></div>
+    <div class="why-card"><div class="num">04</div><h4>Best Prices</h4><p>Competitive prices with no hidden charges. Transparent quotes before any work begins.</p></div>
+    <div class="why-card"><div class="num">05</div><h4>AMC Contracts</h4><p>Annual maintenance contracts to keep your equipment running at peak performance year-round.</p></div>
+    <div class="why-card"><div class="num">06</div><h4>24/7 Support</h4><p>Reach us via WhatsApp, call, or visit anytime. We're here at every step.</p></div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="section-header center">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Book a Service or Get a Free Quote</h2>
+    <p class="section-sub">Fill the form or contact us directly — we'll respond within minutes!</p>
+  </div>
+  <div class="booking-wrap">
+    <div class="booking-info scroll-reveal">
+      <p>Want to buy a product, get your purifier serviced, or enquire about SBI Insurance? Just reach out — we're always ready to help!</p>
+      <a href="https://wa.me/917702211858" class="contact-method" target="_blank">
+        <div class="contact-method-icon" style="background:#dcfce7">💬</div>
+        <div class="contact-method-text"><strong>WhatsApp Us</strong><span>+91 7702211858 — Quick replies guaranteed</span></div>
+      </a>
+      <a href="tel:+917702211858" class="contact-method">
+        <div class="contact-method-icon" style="background:#e6f4ff">📞</div>
+        <div class="contact-method-text"><strong>Call Us Directly</strong><span>+91 7702211858 — Mon–Sat, 9AM–7PM</span></div>
+      </a>
+      <div class="contact-method" style="cursor:default">
+        <div class="contact-method-icon" style="background:#fef9c3">📍</div>
+        <div class="contact-method-text"><strong>Visit Our Shop</strong><span>Deepika Water And Power Solutions — call for directions</span></div>
+      </div>
+      <div class="contact-method" style="cursor:default">
+        <div class="contact-method-icon" style="background:#f5f3ff">🛡️</div>
+        <div class="contact-method-text"><strong>SBI Insurance Enquiry</strong><span>Call or WhatsApp for free plan consultation</span></div>
+      </div>
+    </div>
+    <div class="booking-form scroll-reveal">
+      <h3>📋 Book / Enquire Now</h3>
+      <div class="form-row">
+        <div class="form-group"><label>Your Name *</label><input type="text" id="f-name" placeholder="Full name"/></div>
+        <div class="form-group"><label>Phone Number *</label><input type="tel" id="f-phone" placeholder="+91 XXXXXXXXXX"/></div>
+      </div>
+      <div class="form-group">
+        <label>Service / Product *</label>
+        <select id="f-service">
+          <option value="">-- Select --</option>
+          <option>Water Purifier – New Purchase</option>
+          <option>Water Purifier – Service/Repair</option>
+          <option>Water Dispenser / Glasses</option>
+          <option>Water Treatment Plant</option>
+          <option>Power / Inverter / Solar</option>
+          <option>SBI Life Insurance Enquiry</option>
+          <option>SBI Health Insurance Enquiry</option>
+          <option>Annual Maintenance Contract (AMC)</option>
+          <option>Other Enquiry</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Preferred Date</label><input type="date" id="f-date"/></div>
+      <div class="form-group"><label>Message / Details</label><textarea id="f-msg" placeholder="Describe your requirement or questions..."></textarea></div>
+      <button class="submit-btn" onclick="submitForm()">🚀 Send via WhatsApp</button>
+      <div class="success-msg" id="successMsg">✅ WhatsApp opened! We'll reply shortly on 7702211858.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <div class="footer-logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2C12 2 4 9 4 14a8 8 0 0016 0c0-5-8-12-8-12z"/></svg></div>
+        <div class="footer-logo-text">Deepika Water & Power Solutions</div>
+      </div>
+      <p>Your trusted partner for pure water, water plants, dispensers, power solutions, and SBI Life Insurance. Quality products. Expert service. Always.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">Water Purifiers</a></li>
+        <li><a href="#services">Water Dispensers</a></li>
+        <li><a href="#services">Water Plants</a></li>
+        <li><a href="#insurance">SBI Insurance</a></li>
+        <li><a href="#services">Power Solutions</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Brands</h5>
+      <ul>
+        <li><a href="#brands">Kent RO</a></li>
+        <li><a href="#brands">Aquaguard</a></li>
+        <li><a href="#brands">Livpure</a></li>
+        <li><a href="#brands">HUL Pureit</a></li>
+        <li><a href="#brands">Luminous</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact Us</h5>
+      <div class="footer-contact">
+        <strong>📞 7702211858</strong><br/>
+        <a href="https://wa.me/917702211858" style="color:rgba(255,255,255,0.65)">💬 WhatsApp Now</a><br/>
+        <a href="tel:+917702211858" style="color:rgba(255,255,255,0.65)">📱 Call Now</a><br/><br/>
+        Mon – Sat<br/>9:00 AM – 7:00 PM
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Deepika Water And Power Solutions. All rights reserved.</span>
+    <span>📞 <a href="tel:+917702211858">+91 7702211858</a></span>
+  </div>
+</footer>
+
+<a href="https://wa.me/917702211858" class="floating-wa" target="_blank" title="Chat on WhatsApp">💬</a>
+
+<script>
+  function toggleNav() { document.getElementById('navbar').classList.toggle('open'); }
+  document.querySelectorAll('#navLinks a').forEach(a => a.addEventListener('click', () => document.getElementById('navbar').classList.remove('open')));
+
+  const reveals = document.querySelectorAll('.scroll-reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.10 });
+  reveals.forEach(r => observer.observe(r));
+
+  function showBrand(id) {
+    document.querySelectorAll('.brand-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.brand-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('brand-' + id).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  function enquire(product) {
+    const msg = `Hello Deepika Water And Power Solutions!%0A%0AI'm interested in: *${encodeURIComponent(product)}*%0A%0APlease share more details and pricing. Thank you!`;
+    window.open(`https://wa.me/917702211858?text=${msg}`, '_blank');
+  }
+
+  function submitForm() {
+    const name = document.getElementById('f-name').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    const service = document.getElementById('f-service').value;
+    if (!name || !phone || !service) { alert('Please fill Name, Phone, and Service type.'); return; }
+    const msg = document.getElementById('f-msg').value.trim();
+    const date = document.getElementById('f-date').value;
+    const text = `Hello Deepika Water And Power Solutions!%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AService: ${encodeURIComponent(service)}${date ? '%0ADate: ' + encodeURIComponent(date) : ''}${msg ? '%0AMessage: ' + encodeURIComponent(msg) : ''}%0A%0APlease confirm my booking. Thank you!`;
+    window.open(`https://wa.me/917702211858?text=${text}`, '_blank');
+    document.getElementById('successMsg').style.display = 'block';
+    document.getElementById('f-name').value = '';
+    document.getElementById('f-phone').value = '';
+    document.getElementById('f-service').value = '';
+    document.getElementById('f-date').value = '';
+    document.getElementById('f-msg').value = '';
+  }
+</script>
+</body>
+</html>
